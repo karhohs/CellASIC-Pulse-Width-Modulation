@@ -1,0 +1,13 @@
+README to CellASIC-Pulse-Width-Modulation
+A set of m-files (referred to hereafter as RxPWM) are created to deliver arbitrary concentrations of drug at arbitrary times to cells using the ONIX microfluidic system by CellASIC. In essence, pulse-width-modulation (PWM) is used to a concentration of drug between 0 and the concentration of drug found in a sourcing well.
+
+As if 11/6/2011 PWM has not been shown to be viable in delivering arbitrary drug concentrations, so caveat emptor.
+
+RxPWM is a command line tool that runs in the MATLAB environment. RxPWM will accept a pair of vectors that contain a normalized 'drug signal', the dependent vector, and a vector of the same length representing time. The units of time must be specified. RxPWM will interpolate the drug signal using the spline method and create a PWM signal at the resolution of the carrier frequency. The carrier frequency can be specified by the user. It has a lower limit set by the physical limitations of the pumps in the ONIX system.
+
+The lower limit is defined as follows: The minimum switching time of the ONIX pump valves is defined as the smallest permissible duty cycle chosen to be 5%. Based on the ONIX spec sheet of the valves, they have a 5 ms or less "ON" and 4 ms or less "OFF". Since it is unclear how much drug will actually be delivered during a rapid "ON"/"OFF" pulse of 9ms, an estimation of the drug delivered is made. Assuming drug concentration linearly rises from 0 to MAX (or MAX to 0) during the "ON" (or "OFF") interval, a rapid "ON"/"OFF" is approximately a 4.5 pulse of MAX drug concentration. The error in the estimation can be reduced by increasing the time spent "ON". If the added "ON" time is 18ms, then the worst case scenario is a 20% error of drug delivered at 5% duty cycle. The minimum carrier frequcny is then decided to be 20*18ms = 360ms = 2.78Hz @ 50% duty cycle. The carrier frequency should be much higher than the frequency content in the modulated waveform.
+
+The 5% cutoff limits pulses to duty cycles between 5% and 95%. Errors in recreating the waveform created by this limit are not yet corrected for. Note that a calculated duty cycle of less than 5% is rounded to 0%, and a calculated duty-cycle of more than 95% is rounded to 100%.
+
+
+Author(s): Kyle Karhohs
