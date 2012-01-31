@@ -2,8 +2,8 @@ function [pwm_lead,pwm_trail] = pwm_intersective_method(y_0, x_0, y_1, x_1)
 %input:
 %y_0, x_0, y_1, x_1 = two points that make a line. These two points should
 %be from a "drug waveform". The waveform will have previously been
-%normalized to 1. Time will have previously been normalized to the carrier
-%frequency.
+%normalized to be between 0 and 1. Time will have previously been
+%normalized to the carrier frequency.
 %pwm_time_error = The time between the two input points may not be
 %an integer multiple of the carrier frequency. Therefore, similar to the
 %extra day in a leap year, the pwm_time_error keeps track of this building
