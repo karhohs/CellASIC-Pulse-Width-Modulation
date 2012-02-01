@@ -42,23 +42,23 @@ for i=1:number_of_pulses
 end
 
 %<debug note="plots the modulate waveform and the PWM signal">
-% figure
-% plot ((0:number_of_pulses),line_input(0:number_of_pulses),'r')
-% pulsetrain=ones(1,2*number_of_pulses);
-% my_temp = 2:2:2*number_of_pulses; %evens
-% pulsetrain(my_temp) = 0;
-% hold
-% my_temp = 0:number_of_pulses-1;
-% my_temp2 = my_temp + pwm(1,:);
-% my_temp2 = sort([my_temp my_temp2]);
-% stairs(my_temp2,pulsetrain);
-% hold off 
-% figure
-% my_fun = @(x) 5*line_input(x).^2;
-% plot((0:number_of_pulses),my_fun(0:number_of_pulses),'r')
-% hold
-% plot((1:number_of_pulses),cumsum(pwm(1,:)))
-% hold off
+figure
+plot ((0:number_of_pulses),line_input(0:number_of_pulses),'r')
+pulsetrain=ones(1,2*number_of_pulses);
+my_temp = 2:2:2*number_of_pulses; %evens
+pulsetrain(my_temp) = 0;
+hold
+my_temp = 0:number_of_pulses-1;
+my_temp2 = my_temp + pwm(1,:);
+my_temp2 = sort([my_temp my_temp2]);
+stairs(my_temp2,pulsetrain);
+hold off 
+figure
+my_fun = @(x1,x2) m_input*0.5*(x1.^2-x2.^2)+b_input*(x1-x2);
+plot((0:number_of_pulses-1),my_fun(my_temp,my_temp(1)),'r')
+hold
+plot((1:number_of_pulses),cumsum(pwm(1,:)))
+hold off
 %</debug>
 
 pwm_lead = pwm(1,:);
