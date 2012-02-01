@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 function S = my_parseXML(filename)
 % S = my_parseXML(filename)
 % Input:
@@ -22,29 +21,12 @@ function S = my_parseXML(filename)
 %Note Java Objects in MATLAB do not share the same memory limits as
 %traditional MATLAB variables. Therefore, my_parseXML may choke on files
 %larger than 64MB, the assumed default limit.
-=======
-function theStruct = my_parseXML(filename)
-% PARSEXML Convert XML file to a MATLAB structure.
-try
-   tree = xmlread(filename);
-catch err
-   disp(err.message)
-   error('Failed to read XML file %s.',filename);
-end
->>>>>>> 839e78045c90ab69e28fc1ba9a4eadd0ece94b54
 
 try
-<<<<<<< HEAD
     xdoc = xmlread(filename);
 catch err
     disp(err.message)
     error('Failed to read XML file %s.',filename);
-=======
-   theStruct = parseChildNodes(tree);
-catch err
-   disp(err.message)
-   error('Unable to parse XML file %s.',filename);
->>>>>>> 839e78045c90ab69e28fc1ba9a4eadd0ece94b54
 end
 
 %Initialize S
