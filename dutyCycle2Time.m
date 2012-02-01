@@ -1,6 +1,7 @@
-function [t_1,t_0] = dutyCycle2Time(carrier_frequency,duty_cycle)
+function [t_1,t_0] = dutyCycle2Time(carrier_period,duty_cycle)
 %inputs:
-%carrier_frequency = the frequency of the pulses used for PWM. This frequency should be much greater than the modulated signal.
+%carrier_period = the period of the pulses used for PWM. This period should
+%be far less than the modulated signal. Given in milliseconds.
 %duty_cycle = The pulse width. It is a fraction of the pulse period.
 %
 %outputs:
@@ -8,10 +9,12 @@ function [t_1,t_0] = dutyCycle2Time(carrier_frequency,duty_cycle)
 %t_0 = the length of time the pulse is low
 %
 %readme:
-%This function will convert the duty cycle, a realtive number, into two quantities of time that depend on the carrier frequency, or the frequency of the pulses.
-%Function to take in t as 2xNMAX matrix (units milliseconds) and open up v2 
-%(drug) for ton (t(1,:)), then
-%open up v3(no drug) for toff (t(2,:))
+%This function will convert the duty cycle, a percentage, into two
+%quantities of time that depend on the carrier period, i.e. the period
+%of the pulses.
+%Function to take in t as 1xNMAX matrix (units: milliseconds) and open up v2 
+%(drug) for ton (t(1,:)), then open up v3(no drug) for toff (t(2,:)). These
+%commands are
 
 function printout(time_series)
 
